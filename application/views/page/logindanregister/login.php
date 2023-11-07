@@ -38,7 +38,7 @@
         <div class="login-container ">
             <!-- DIV UNTUK LOGO KING FC -->
             <div>
-                <img src="assets/img/icon/undraw_bola.png" alt="Logo King FC" height="250">
+                <img src="assets/img/icon/logoimahgizi.png" alt="Logo King FC" height="250">
             </div>
             <div class="login-card animate__animated animate__fadeInDown">
                 <div class="card">
@@ -47,7 +47,7 @@
                     </center>
                     <h2 style="font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: bold; text-align: center;">Login Page</h2>
                     <div class="card-body">
-                        <h2 style="text-ali                                               gn: center; font-family: 'Poppins', sans-serif; font-weight: bold;" class="card-title"></h2>
+                        <h2 style="text-align: center; font-family: 'Poppins', sans-serif; font-weight: bold;" class="card-title"></h2>
                         <form class="user" method="post" action="<?= base_url('login'); ?>">
                             <div class="form-group">
                                 <label style="font-family: 'Poppins', sans-serif;" for="username"><i class="fas fa-user"></i> Username</label>

@@ -11,7 +11,7 @@ class Pengguna extends CI_Controller
     }
     public function index()
     {
-        $data['title'] = 'KING FC- Data Member';
+        $data['title'] = 'Data User Android';
         $data['memberadmin'] = $this->db->get_where('memberadmin', ['username' =>
         $this->session->userdata('username')])->row_array();
 

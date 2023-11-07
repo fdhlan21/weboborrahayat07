@@ -10,51 +10,36 @@ class Api extends CI_Controller
     function register()
     {
         $data = json_decode(file_get_contents('php://input'), true);
-
- $sql = [
-
-    'nama' => $data['nama'],
-    'tempat' => $data['tempat'],
-    'tanggallahir' => $data['tanggallahir'],
-    'tanggal' => date('d/'),
-    'bulan' => date('/'),
-    'tahun' => date('Y/'),
-
- ];
-            $this->db->insert('pengguna',$sql);
-            if ($sql) {
-                echo 212;
-            } else {
-                echo 505;
-            }
-        
-    }
-
-
-
-
-
-    function login()
-    {
-        $data = json_decode(file_get_contents('php://input'), true);
-
-        $nama = $data['nama'];
-        $tempat = $data['tempat'];
-        $tanggallahir = $data['tanggallahir'];
-
-        $sql = "SELECT * FROM pengguna WHERE nama='$nama' AND tempat='$tempat' AND tanggallahir='$tanggallahir'";
-
-        // cek dulu
-        $jumlah = $this->db->query($sql)->num_rows();
-
-        if ($jumlah > 0) {
-            $user = $this->db->query($sql)->row_array();
-            echo json_encode(($user));
+    
+        $username = $data['username'];
+        $password = md5($data['password']);
+    
+        $sql = "INSERT INTO pengguna (username, password, approve) VALUES ('$username', '$password', 0)";
+    
+        $cek = $this->db->query("SELECT * FROM pengguna WHERE username = '$username'")->num_rows();
+    
+        if ($cek > 0) {
+            echo json_encode(array("status" => 404, "message" => "Email is already exist!"));
         } else {
-            echo 212;
+            $this->db->query($sql);
+            echo json_encode(array("status" => 200, "message" => "Congratulation, You have been registered!"));
         }
     }
+    
 
+    function approveuser()
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        $username = $data['username'];
+    
+        $updateSql = "UPDATE pengguna SET approve = 1 WHERE username = '$username'";
+        $this->db->query($updateSql);
+    
+        echo json_encode(array("status" => 200, "message" => "User approved successfully!"));
+    }
+    
+
+    
 
     function loginkonseling()
     {
@@ -87,6 +72,9 @@ class Api extends CI_Controller
             echo 200;
         }
     }
+
+
+    
 
     function konselingremaja()
     {

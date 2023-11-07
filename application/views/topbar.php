@@ -6,7 +6,7 @@
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-white" style="border-bottom: 5px solid #4682A9;"">
-            <a href=" <?= base_url('Dashboard'); ?>"><img src="assets/img/icon/kingfc.png" height="55px"></a>
+            <a href=" <?= base_url('Dashboard'); ?>"><img src="assets/img/icon/logoimahgizi.png" height="55px"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

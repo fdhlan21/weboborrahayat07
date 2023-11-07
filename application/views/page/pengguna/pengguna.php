@@ -22,8 +22,9 @@ try {
     die("Koneksi ke database gagal: " . $e->getMessage());
 }
 
-// Query SQL untuk mengambil data dari tabel jadwalmainbola
-$queryMember = "SELECT id, username, nohp, alamat FROM memberadmin WHERE role_id = 2";
+$queryMember = "SELECT id, username, approve FROM pengguna WHERE approve = 0";
+
+
 $stmtMember = $pdo->query($queryMember);
 
 // Query SQL untuk mengambil data dari tabel
@@ -58,9 +59,8 @@ $pdo = null;
             <thead>
                 <tr class="" style="color:white; background-color: <?= $color ?>;" role="row">
                     <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="No: activate to sort column descending" style="width: 21.3281px;">No</th>
-                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Username: activate to sort column ascending">Nama Lengkap </th>
-                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Nomor Telepon</th>
-                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Password: activate to sort column ascending">Alamat</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Username: activate to sort column ascending">Username</th>
+                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Password</th>
                     <?php if ($_SESSION['role_id'] == 1) : ?>
                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Password: activate to sort column ascending">Action</th>
                     <?php endif; ?>
@@ -78,14 +78,15 @@ $pdo = null;
                     echo '<tr role="row" class="odd">';
                     echo "<td>$no</td>";
                     echo '<td>' . $row['username'] . '</td>';
-                    echo '<td>' . $row['nohp'] . '</td>';
-                    echo '<td>' . $row['alamat'] . '</td>';
+                    echo '<td>****</td>';
+                   
 
                     // Tampilkan tombol hapus hanya jika pengguna adalah admin (role_id == 1)
                     if ($_SESSION['role_id'] == 1) {
                         echo '<td>';
                         echo '<a class="btn btn-outline-danger" onclick="confirmDelete(' . $row['id'] . ');"><i class="fas fa-trash"></i> Hapus</a>';
                         echo '<a class="btn btn-outline-success" href="pengguna/ubah?id=' . $id . '" style="margin-left: 10px;"><i class="fas fa-user-edit"></i> Ubah</a>';
+                        echo '<a class="btn btn-outline-success" onclick="approveUser(' . $row['id'] . ');"><i class="fas fa-check"></i> Approve</a>';
                         echo '</td>';
                     }
                     echo '</tr>';
@@ -117,7 +118,7 @@ if (mysqli_connect_errno()) {
 if (isset($_GET['hapus']) && $memberadmin['role_id'] == 1) {
     mysqli_query($koneksi, "DELETE FROM memberadmin WHERE id='$_GET[hapus]'");
     echo '<div class="alert alert-success">Member berhasil di hapus ✅</div>';
-    echo "<meta http-equiv=refresh content=1;URL='/kingfc/pengguna'>";
+    echo "<meta http-equiv=refresh content=1;URL='/imahgizi/pengguna'>";
 }
 
 ?>
@@ -127,6 +128,39 @@ if (isset($_GET['hapus']) && $memberadmin['role_id'] == 1) {
             window.location.href = "?hapus=" + id;
         } else {
             // Tidak melakukan apa-apa jika pengguna membatalkan
+        }
+    }
+
+
+ 
+
+
+</script>
+
+<script>
+    function approveUser(id) {
+        if (confirm("Approve user?")) {
+            // Membuat objek FormData dengan parameter yang akan dikirim
+            var formData = new FormData();
+            formData.append('id', id);
+
+            // Membuat permintaan POST menggunakan fetch
+            fetch('http://localhost/imahgizi/Api/approveuser', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 200) {
+                    alert('User approved successfully');
+                    // Reload halaman atau lakukan tindakan lain yang diperlukan
+                } else {
+                    alert('Gagal menyetujui pengguna.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
     }
 </script>
