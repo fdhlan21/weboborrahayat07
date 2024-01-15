@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <style>
         .bg-web {
-            background-color: #07A8D8;
+            background-color: #fff;
         }
     </style>
 

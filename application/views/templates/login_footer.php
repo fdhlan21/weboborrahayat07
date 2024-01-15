@@ -11,7 +11,7 @@
     <blockquote class="blockquote text-center" style="margin-top: -50px;">
         <p class="mb-0"></p>
             <footer class="blockquote-footer" color: #000 style="color: #000; font-family: 'Alata', sans-serif; text-align: center; font-weight: bold;">
-                © KINGFC
+                ©   OBOR RAHAHAT 07
             </footer>
     </blockquote>
 </center>

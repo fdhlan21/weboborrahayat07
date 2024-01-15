@@ -5,18 +5,18 @@ class Dashboard extends CI_Controller
 {
     public function index()
     {
-        $data['title'] = 'SPP - Dashboard';
-        $data['memberadmin'] = $this->db->get_where('memberadmin', ['username' =>
+        $data['title'] = 'OBOR RAHAYAT 07 - Dashboard';
+        $data['useradmin'] = $this->db->get_where('useradmin', ['username' =>
         $this->session->userdata('username')])->row_array();
 
         // Cek role_id pengguna
-        if ($data['memberadmin']['role_id'] == 1) {
-            // Jika role_id adalah 1 (memberadmin), tampilkan view memberadmin
+        if ($data['useradmin']['role_id'] == 1) {
+            // Jika role_id adalah 1 (useradmin), tampilkan view useradmin
             $this->load->view('templates/header', $data);
             $this->load->view('topbar', $data);
             $this->load->view('page/dashboard/index', $data);
             $this->load->view('templates/footer');
-        } elseif ($data['memberadmin']['role_id'] == 2) {
+        } elseif ($data['useradmin']['role_id'] == 2) {
             // Jika role_id adalah 2 (user), tampilkan view user
             $this->load->view('templates/header', $data);
             $this->load->view('topbar', $data);

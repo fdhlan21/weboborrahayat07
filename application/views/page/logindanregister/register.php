@@ -39,7 +39,7 @@
         <div class="login-container ">
             <!-- DIV UNTUK LOGO KING FC -->
             <div>
-                <img src="../assets/img/icon/undraw_bola.png" alt="Logo King FC" height="250">
+                <img src="../assets/img/icon/icontarka1.png" alt="Logo King FC" height="250">
             </div>
             <div class="login-card animate__animated animate__fadeInRight">
                 <div class="card">
@@ -48,32 +48,12 @@
                         <form class="user" method="POST" action="<?= base_url('login/register'); ?>">
                             <div class="form-group">
                                 <label style="font-family: 'Poppins', sans-serif;" for="username">
-                                    <i class="fas fa-user" style="margin-right: 5px;"></i> Nama Lengkap
+                                    <i class="fas fa-user" style="margin-right: 5px;"></i> Username
                                 </label>
                                 <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Nama Lengkap...">
                                 <small class="text-danger"><?= form_error('username'); ?></small>
                             </div>
-                            <div class="form-group">
-                                <label style="font-family: 'Poppins', sans-serif;" for="nohp">
-                                    <i class="fas fa-phone-alt" style="margin-right: 5px;"></i> Nomor Telepon
-                                </label>
-                                <input type="number" class="form-control" id="nohp" name="nohp" placeholder="Masukkan Nomor Telepon...">
-                                <small class="text-danger"><?= form_error('nohp'); ?></small>
-                            </div>
-                            <div class="form-group">
-                                <label style="font-family: 'Poppins', sans-serif;" for="alamat">
-                                    <i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i> Alamat
-                                </label>
-                                <textarea class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat Lengkap..." style="height: 120px;"></textarea>
-                                <small class="text-danger"><?= form_error('alamat'); ?></small>
-                            </div>
-                            <div class="form-group">
-                                <label style="font-family: 'Poppins', sans-serif;" for="email">
-                                    <i class="fas fa-at" style="margin-right: 5px;"></i> Email
-                                </label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email...">
-                                <small class="text-danger"><?= form_error('email'); ?></small>
-                            </div>
+        
                             <div class="form-group">
                                 <label style="font-family: 'Poppins', sans-serif;" for="password">
                                     <i class="fas fa-unlock-alt" style="margin-right: 5px;"></i> Password

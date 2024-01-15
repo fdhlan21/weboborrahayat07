@@ -38,7 +38,7 @@
         <div class="login-container ">
             <!-- DIV UNTUK LOGO KING FC -->
             <div>
-                <img src="assets/img/icon/logoimahgizi.png" alt="Logo King FC" height="250">
+                <img src="assets/img/icon/icontarka1.png" alt="Logo King FC" height="250">
             </div>
             <div class="login-card animate__animated animate__fadeInDown">
                 <div class="card">
